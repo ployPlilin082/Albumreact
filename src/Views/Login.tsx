@@ -4,7 +4,7 @@ import { EventService } from "../service/eventService";
 import type { IAPIResponse } from "../service/eventService";
 
 import { User } from "../Models/User";
-import "./login.css";
+import "./Login.css";
 
 const Login: React.FC = () => {
   const navigate = useNavigate();
