@@ -4,36 +4,31 @@ pipeline {
     tools {
         nodejs 'NodeJs v22.19.0 (LTS)'
     }
-   environment  {
+
+    environment {
         SONARQUBE_ENV = 'SonarQube'
     }
-    stage('SonarQube Analysis') {
-        steps {
-            script {
-                def scannerHome = tool 'SonarQubeScanner';
-                withCredentials([string(credentialsId: 'SONAR_TOKEN', variable: 'SONAR_TOKEN')]) {
-                    withSonarQubeEnv("${SONARQUBE_ENV}") {
-                        sh """
-                            echo "Running SonarQube Analysis..."
-                            ${scannerHome}/bin/sonar-scanner \
-                            -Dsonar.source=src \
-                            -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info \
-                            -Dsonar.login=${SONAR_TOKEN}
-                        """
+
+    stages {
+
+        stage('SonarQube Analysis') {
+            steps {
+                script {
+                    def scannerHome = tool 'SonarQubeScanner'
+                    withCredentials([string(credentialsId: 'SONAR_TOKEN', variable: 'SONAR_TOKEN')]) {
+                        withSonarQubeEnv("${SONARQUBE_ENV}") {
+                            sh """
+                                echo "Running SonarQube Analysis..."
+                                ${scannerHome}/bin/sonar-scanner \
+                                -Dsonar.sources=src \
+                                -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info \
+                                -Dsonar.login=${SONAR_TOKEN}
+                            """
+                        }
                     }
                 }
             }
         }
-
-    stages {
-
-        /* stage('Checkout') {
-            steps {
-                withCredentials([string(credentialsId: 'GitHubPATReact', variable: 'GIT_PAT')]) {
-                    git url: "https://${GIT_PAT}@github.com/ployPlilin082/Albumreact.git", branch: 'main'
-                }
-            }
-        } */
 
         stage('Install Dependencies') {
             steps {
@@ -82,5 +77,4 @@ pipeline {
             echo '❌ Build failed. Check the logs for more details.'
         }
     }
-}
 }
