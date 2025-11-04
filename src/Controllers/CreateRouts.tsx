@@ -2,7 +2,6 @@ import { Route } from "react-router-dom";
 import Create from "../Views/Create";
 import Login from "../Views/Login";
 import Register from "../Views/register";
-import ProtectedRoute from "../auth/ProtectedRoute";
 import Sidebar from "../component/Sidebars";
 import  Rounded from "../component/Rounded";
 import Footer from "../component/Footer";
@@ -21,9 +20,7 @@ const CreateRouts = [
    <Route key="cardprofile" path="/cardprofile" element={<Cardprofile />} />,
    <Route key="searchForm" path="/SearchForm" element={<SearchForm />} />,
    <Route key="Cardlist" path="/Cardlist" element={<Cardlist />} />,
-   <Route element={<ProtectedRoute />}>
-      <Route path="/Creat" element={< Create/>} />
-    </Route>
+   <Route path="/Create" element={<Create />} />
 ];
 
 export default CreateRouts;
