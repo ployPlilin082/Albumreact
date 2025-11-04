@@ -4,51 +4,62 @@ pipeline {
     tools {
         nodejs 'NodeJs v22.19.0 (LTS)'
     }
-    stages{
-        
-        /*stage('Checkout') {
+
+    stages {
+
+        /* stage('Checkout') {
             steps {
-                withCredentials([usernamePassword(credentialsId: 'GitHubPATReact', variable:'GIT_PAT')]) {
-                    git url: "https://${GIT_PAT}@https://github.com/ployPlilin082/Albumreact.git", branch: 'main'
+                withCredentials([string(credentialsId: 'GitHubPATReact', variable: 'GIT_PAT')]) {
+                    git url: "https://${GIT_PAT}@github.com/ployPlilin082/Albumreact.git", branch: 'main'
                 }
             }
-    }*/
+        } */
 
-    stage('Install Dependencies') {
-        steps {
-            sh 'npm install'
+        stage('Install Dependencies') {
+            steps {
+                sh 'npm install'
+            }
         }
-    }
-    stage('Build') {
-        steps {
-            sh 'npm run build'
+
+        stage('Build') {
+            steps {
+                sh 'npm run build'
+            }
         }
-    }
-    stage('Build Docker Image') {
-        steps {
-            script {
+
+        stage('Build Docker Image') {
+            steps {
+                script {
+                    sh '''
+                        echo "Building Docker Image..."
+                        docker build -t albumreact:latest .
+                    '''
+                }
+            }
+        }
+
+        stage('Deploy') {
+            steps {
                 sh '''
-                echo "Building Docker Image..."
-                docker build -t albumreact:latest .
+                    echo "Deploying Docker Container..."
+                    docker stop react-app || true
+                    docker rm react-app || true
+                    docker run -d --name react-app -p 4080:80 albumreact:latest
                 '''
             }
         }
     }
-    stage('Deploy') {
-        steps {
-            sh '''
-            echo "Deploying Docker Container..."
-            docker stop react-app || true
-            docker rm react-app || true
-            docker run -d --name react-app -p 4080:80 my-react-app
-            '''
-        }
-    }
-     
-     post {
+
+    post {
         always {
+            echo 'Cleaning workspace...'
             cleanWs()
         }
-     }
-}
+        success {
+            echo '✅ Build and Deploy completed successfully!'
+        }
+        failure {
+            echo '❌ Build failed. Check the logs for more details.'
+        }
+    }
 }
