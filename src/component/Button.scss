@@ -1,0 +1,63 @@
+@import "./variables";
+
+.btn,
+.btn1 {
+  padding: 10px 50px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-transform: none;
+  letter-spacing: 0.5px;
+  box-sizing: border-box; 
+  min-width: 150px;      
+  display: inline-flex;   
+  align-items: center;
+  justify-content: center;
+}
+
+.btn {
+  border: none;
+}
+
+.btn1 {
+  background-color: transparent;
+  border: 2px solid;
+  overflow: hidden;
+}
+
+
+@each $name, $value in $colors {
+  .btn-#{$name} {
+    background-color: $value;
+    &:hover {
+      opacity: 0.9;
+      transform: scale(1.05);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    }
+    &:active {
+      transform: scale(0.95);
+    }
+  }
+}
+
+
+@each $name, $value in $colors {
+  .btn1-#{$name} {
+    background-color: transparent;
+    border-color: $value;
+    color: $value;
+
+    &:hover {
+      background-color: $value;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+      transform: scale(1.05);
+    }
+
+    &:active {
+      transform: scale(0.95);
+    }
+  }
+}

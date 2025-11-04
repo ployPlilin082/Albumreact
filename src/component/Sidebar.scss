@@ -1,0 +1,60 @@
+/* เมนูหลัก */
+.sidebar-item {
+  margin-bottom: 8px;
+
+  .sidebar-link {
+    display: flex;
+    align-items: center;
+  
+  ;
+    color: #333;
+    border-radius: 8px;
+    padding: 10px 14px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background-color: #065f46;
+      text-decoration: none;
+    }
+
+    i {
+      font-size: 14px;
+      transition: transform 0.3s ease;
+    }
+
+    &[aria-expanded="true"] i {
+      transform: rotate(180deg);
+    }
+  }
+}
+
+
+#masterMenu {
+  background-color: #f9fafb; 
+  border-radius: 6px;
+  margin-top: 6px;
+  padding: 6px 0;
+
+  li {
+    list-style: none;
+  }
+
+  .sidebar-sublink {
+    display: block;
+    color: #333;
+    padding: 8px 16px 8px 28px; 
+    text-decoration: none;
+    font-size: 14px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background-color: #e6f4ea; 
+      color: #047857;
+      text-decoration: none;
+      transform: translateX(3px); 
+    }
+  }
+}

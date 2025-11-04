@@ -1,0 +1,59 @@
+
+.login-page {
+  display: block;
+}
+
+.login-page .p-3 {
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 4px 30px;
+  padding: 2rem;
+}
+
+.login-page h1 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #d63384;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.login-page .form-control {
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  padding: 10px 14px;
+  font-size: 15px;
+}
+
+.login-page .form-control:focus {
+  border-color: #d63384;
+  box-shadow: 0 0 0 0.2rem rgba(214, 51, 132, 0.25);
+}
+
+.login-page button.btn {
+  background: linear-gradient(to right, #d63384, #6f42c1);
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.login-page button.btn:hover {
+  background: linear-gradient(to right, #c2185b, #5e35b1);
+  transform: scale(1.03);
+}
+
+.login-page a {
+  color: #d63384;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.login-page a:hover {
+  text-decoration: underline;
+}
+
+.login-page p {
+  margin-top: 1.5rem;
+  text-align: center;
+}

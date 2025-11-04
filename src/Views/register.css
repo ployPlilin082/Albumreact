@@ -1,0 +1,35 @@
+
+.register-page {
+  display: block;
+}
+
+.register-page h1 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #d63384;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.register-page button.btn {
+  background: linear-gradient(to right, #d63384, #6f42c1);
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.register-page button.btn:hover {
+  background: linear-gradient(to right, #c2185b, #5e35b1);
+  transform: scale(1.03);
+}
+
+.register-page a {
+  color: #d63384;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.register-page a:hover {
+  text-decoration: underline;
+}
