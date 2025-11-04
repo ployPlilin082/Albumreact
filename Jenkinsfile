@@ -4,6 +4,9 @@ pipeline {
     tools {
         nodejs 'NodeJs v22.19.0 (LTS)'
     }
+    evironment {
+        SONARQUBE_ENV = 'SonarQube'
+    }
 
     stages {
 
