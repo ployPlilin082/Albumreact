@@ -55,10 +55,11 @@ pipeline {
         stage('Docker Scout Scan') {
             steps {
                 script {
-                    sh '''
-                        echo "Scanning local Docker image with Docker Scout"
-                        docker scout quickview my-react-app:latest 
-                    '''
+                   sh '''
+    echo "Scanning local Docker image with Docker Scout"
+    docker scout quickview albumreact:latest
+'''
+
                 }
             }
         }
